@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: npaws-auth
+  datasource:
+    url: jdbc:postgresql://localhost:5432/npaws
+    username: osiptsoff
+    password: 
+app:
+  config:
+    keyfile: keys
+    clientUrl: http://localhost:9000
+    refreshLifespawnSec: 1209600
+    accessLifespawnSec: 300
