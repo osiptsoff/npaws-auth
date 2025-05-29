@@ -23,7 +23,7 @@ import ru.osiptsoff.npaws_auth.service.UserService;
 @Validated
 public class UserController {
     @Getter
-    private UserService service;
+    private final UserService service;
 
     @PostMapping("")
     public UserDto create(@Valid @RequestBody UserDto dto) {
