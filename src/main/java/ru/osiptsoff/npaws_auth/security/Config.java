@@ -52,7 +52,12 @@ public class Config {
             .csrf(c -> c.disable())
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .formLogin(f -> f.disable())
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+            .authorizeHttpRequests(auth -> {
+                auth.requestMatchers("/key", "/auth").permitAll();
+                auth.requestMatchers("/user").hasAuthority("admin");
+
+
+            })
             .build();
     }
 }
