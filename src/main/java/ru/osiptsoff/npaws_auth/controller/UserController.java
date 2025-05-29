@@ -39,4 +39,9 @@ public class UserController {
     public UserDto changePassword(@Valid @RequestBody UserDto dto) {
         return getService().changePassword(dto);
     }
+
+    @PutMapping("/role")
+    public UserDto changeRoles(@Valid @RequestBody UserDto dto) {
+        return getService().setRoles(dto);
+    }
 }

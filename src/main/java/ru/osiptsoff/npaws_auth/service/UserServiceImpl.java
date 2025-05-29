@@ -99,6 +99,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return dto;
     }
 
+    @Override
+    public UserDto setRoles(UserDto dto) throws UsernameNotFoundException, IncorrectPasswordException {
+        User user = loadUserByUsername(dto.getLogin());
+
+        user.setRoles(mapRoles(dto.getRoles()));
+        userRepository.save(user);
+        return dto;
+    }
+
     private Set<Role> mapRoles(Collection<String> roleNames) throws RoleNotExistsException {
         if (this.roles == null) {
             loadRoles();

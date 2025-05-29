@@ -14,4 +14,5 @@ public interface UserService {
     UserDto changePassword(UserDto dto) throws UsernameNotFoundException, IncorrectPasswordException;
     UserDto save(UserDto dto) throws UsernameAlreadyExistsException, RoleNotExistsException, NoMatchingInfoException;
     UserDto findById(UUID uuid) throws NoMatchingInfoException;
+    UserDto setRoles(UserDto dto) throws UsernameNotFoundException, IncorrectPasswordException;
 }
