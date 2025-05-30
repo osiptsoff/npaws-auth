@@ -53,7 +53,7 @@ public class Config {
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .formLogin(f -> f.disable())
             .authorizeHttpRequests(auth -> {
-                auth.anyRequest().permitAll();
+                auth.anyRequest().authenticated();
 
 
             })
