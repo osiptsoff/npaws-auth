@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ru.osiptsoff.npaws_auth.model.Role;
 import ru.osiptsoff.npaws_auth.model.User;
+import ru.osiptsoff.npaws_auth.model.UserInfo;
 
 @Component
 @RequiredArgsConstructor
@@ -71,6 +72,13 @@ public class JwtUtility {
             })
             .collect(Collectors.toSet())
         );
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUuid(user.getId());
+        userInfo.setUser(user);
+        if (claims.get("name") != null) {
+            userInfo.setName(claims.get("name").toString());
+        }
+        user.setUserInfo(userInfo);
 
         return user;
     }
@@ -83,6 +91,7 @@ public class JwtUtility {
             .expiration(new Date(now.getTime() + lifespawn * 1000))
             .subject(user.getUsername())
             .claim("userId", user.getId())
+            .claim("name", user.getUserInfo().getName())
             .audience()
             .add(user.getAuthorities()
                 .stream()

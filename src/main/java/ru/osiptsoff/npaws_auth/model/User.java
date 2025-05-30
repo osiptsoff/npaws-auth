@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -39,6 +40,10 @@ public class User implements UserDetails {
         inverseJoinColumns = { @JoinColumn(name = "role_id") }
     )
     private Set<Role> roles;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "person_id")
+    private UserInfo userInfo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

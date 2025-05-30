@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
             .map(r -> r.getName())
             .toList()
         );
-
+        result.setName(user.getUsername());
         return result;
     }
 

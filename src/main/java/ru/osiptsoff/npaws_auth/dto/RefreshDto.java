@@ -13,5 +13,6 @@ import lombok.NoArgsConstructor;
 public class RefreshDto {
     private TokenDto token;
     private UUID userId;
+    private String name;
     private List<String> roles;
 }
